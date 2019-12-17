@@ -1,6 +1,6 @@
 'use strict';
 
-const jade = require('jade');
+const pug = require('pug');
 const _ = require('lodash');
 let wld;
 
@@ -29,7 +29,7 @@ module.exports = function (app, logger) {
       limit: itemsOnPage,
       offset: (page - 1) * itemsOnPage
     }).then(logs => {
-      res.send(jade.renderFile(__dirname + '/views/logs.jade', {
+      res.send(pug.renderFile(__dirname + '/views/logs.jade', {
         logs,
         prevPage: page > 1 ? page - 1 : null,
         nextPage: page + 1
